@@ -11,8 +11,8 @@ void main() {
     overview: 'overview',
     popularity: 1,
     posterPath: 'posterPath',
-    voteAverage: 2,
     name: 'name',
+    voteAverage: 1.1,
     voteCount: 1,
   );
 
@@ -25,11 +25,11 @@ void main() {
     popularity: 1,
     posterPath: 'posterPath',
     name: 'name',
-    voteAverage: 1,
+    voteAverage: 1.1,
     voteCount: 1,
   );
 
-  test('should be a subclass of Movie entity', () async {
+  test('should be a subclass of Tv entity', () async {
     final result = tTvSeriesModel.toEntity();
     expect(result, tTvSeries);
   });

@@ -17,9 +17,9 @@ void main() {
 
   final tTvSeries = <TvSeries>[];
 
-  test('should get list of movies from repository', () async {
+  test('should get list of tv series from repository', () async {
     // arrange
-    when(mockTvSeriesRepository.getTopRatedMovies())
+    when(mockTvSeriesRepository.getTopRatedTvSeries())
         .thenAnswer((_) async => Right(tTvSeries));
     // act
     final result = await usecase.execute();

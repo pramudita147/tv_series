@@ -17,7 +17,7 @@ void main() {
 
   final tId = 1;
 
-  test('should get movie detail from the repository', () async {
+  test('should get tv series detail from the repository', () async {
     // arrange
     when(mockTvSeriesRepository.getTvSeriesDetail(tId))
         .thenAnswer((_) async => Right(testTvSeriesDetail));

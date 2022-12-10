@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:ditonton/domain/entities/movie.dart';
+import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:ditonton/domain/usecases/search_tvseries.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -18,9 +18,9 @@ void main() {
   final tTvSeries = <TvSeries>[];
   final tQuery = 'Spiderman';
 
-  test('should get list of movies from the repository', () async {
+  test('should get list of tv series from the repository', () async {
     // arrange
-    when(mockTvSeriesRepository.searchMovies(tQuery))
+    when(mockTvSeriesRepository.searchTvSeries(tQuery))
         .thenAnswer((_) async => Right(tTvSeries));
     // act
     final result = await usecase.execute(tQuery);

@@ -193,24 +193,24 @@ void main() {
       originalName: 'originalName',
       overview: 'overview',
       popularity: 1,
+      episodeRunTime: [1, 2, 3],
+      firstAirDate: 'firstAirDate',
+      lastAirDate: 'lastAirDate',
+      numberOfEpisodes: 1,
+      numberOfSeasons: 1,
+      inProduction: false,
+      languages: ["en"],
+      type: 'type',
       posterPath: 'posterPath',
-      episodeRunTime: [120, 100],
       status: 'Status',
       tagline: 'Tagline',
       name: 'name',
       voteAverage: 1,
       voteCount: 1,
-      firstAirDate: '',
-      inProduction: true,
-      languages: [],
-      lastAirDate: '',
-      numberOfEpisodes: 1,
-      numberOfSeasons: 2,
-      type: '',
     );
 
     test(
-        'should return Movie data when the call to remote data source is successful',
+        'should return Tv Series data when the call to remote data source is successful',
         () async {
       // arrange
       when(mockRemoteDataSource.getTvSeriesDetail(tId))
@@ -250,7 +250,7 @@ void main() {
     });
   });
 
-  group('Get Movie Recommendations', () {
+  group('Get Tv Series Recommendations', () {
     final tTvSeriesList = <TvSeriesModel>[];
     final tId = 1;
 
@@ -299,7 +299,7 @@ void main() {
   group('Search Tv', () {
     final tQuery = 'spiderman';
 
-    test('should return movie list when call to data source is successful',
+    test('should return tv series list when call to data source is successful',
         () async {
       // arrange
       when(mockRemoteDataSource.searchMovies(tQuery))
@@ -396,8 +396,8 @@ void main() {
     });
   });
 
-  group('get watchlist movies', () {
-    test('should return list of Movies', () async {
+  group('get watchlist tv series', () {
+    test('should return list of tv series', () async {
       // arrange
       when(mockLocalDataSource.getWatchlistTvSeries())
           .thenAnswer((_) async => [testTvSeriesTable]);

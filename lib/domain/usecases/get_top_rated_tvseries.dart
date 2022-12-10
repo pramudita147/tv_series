@@ -4,11 +4,11 @@ import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:ditonton/domain/repositories/tvseries_repository.dart';
 
 class GetTopRatedTvSeries {
-  final TvSeriesRepository tvSeriesrepository;
+  final TvSeriesRepository repository;
 
-  GetTopRatedTvSeries(this.tvSeriesrepository);
+  GetTopRatedTvSeries(this.repository);
 
   Future<Either<Failure, List<TvSeries>>> execute() {
-    return tvSeriesrepository.getTopRatedTvSeries();
+    return repository.getTopRatedTvSeries();
   }
 }

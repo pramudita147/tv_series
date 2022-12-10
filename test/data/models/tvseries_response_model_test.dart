@@ -8,15 +8,15 @@ import '../../json_reader.dart';
 
 void main() {
   final tTvSeriesModel = TvSeriesModel(
-    backdropPath: 'backdropPath',
-    genreIds: [1, 2, 3],
+    backdropPath: "/path.jpg",
+    genreIds: [1, 2, 3, 4],
     id: 1,
-    originalName: 'originalName',
-    overview: 'overview',
-    popularity: 1,
-    posterPath: 'posterPath',
+    originalName: "Original Name",
+    overview: "Overview",
+    popularity: 1.0,
+    posterPath: "/path.jpg",
+    name: "name",
     voteAverage: 1.0,
-    name: 'name',
     voteCount: 1,
   );
   final tTvSeriesResponseModel =
@@ -25,7 +25,7 @@ void main() {
     test('should return a valid model from JSON', () async {
       // arrange
       final Map<String, dynamic> jsonMap =
-          json.decode(readJson('dummy_data/now_playing_tv.json'));
+          json.decode(readJson('dummy_data/tvseries_now_playing.json'));
       // act
       final result = TvSeriesResponse.fromJson(jsonMap);
       // assert
