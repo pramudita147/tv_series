@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 import '../../dummy_data/tvseries_dummy_objects.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../helpers/tvseries_test_helper.mocks.dart';
 
 void main() {
   late TvSeriesLocalDataSourceImpl dataSource;

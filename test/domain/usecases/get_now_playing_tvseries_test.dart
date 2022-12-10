@@ -4,7 +4,7 @@ import 'package:ditonton/domain/usecases/get_now_playing_tvseries.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../helpers/test_helper.mocks.dart';
+import '../../helpers/tvseries_test_helper.mocks.dart';
 
 void main() {
   late GetNowPlayingTvSeries usecase;
@@ -19,7 +19,7 @@ void main() {
 
   test('should get list of tv series from the repository', () async {
     // arrange
-    when(mockTvSeriesRepository.getNowPlayingMovies())
+    when(mockTvSeriesRepository.getNowPlayingTvSeries())
         .thenAnswer((_) async => Right(tTvSeries));
     // act
     final result = await usecase.execute();

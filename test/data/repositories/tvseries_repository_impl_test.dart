@@ -11,8 +11,8 @@ import 'package:ditonton/domain/entities/tvseries.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../dummy_data/dummy_objects.dart';
-import '../../helpers/test_helper.mocks.dart';
+import '../../dummy_data/tvseries_dummy_objects.dart';
+import '../../helpers/tvseries_test_helper.mocks.dart';
 
 void main() {
   late TvSeriesRepositoryImpl repository;
@@ -84,7 +84,7 @@ void main() {
       // act
       final result = await repository.getNowPlayingTvSeries();
       // assert
-      verify(mockRemoteDataSource.getNowPlayingMovies());
+      verify(mockRemoteDataSource.getNowPlayingTvSeries());
       expect(result, equals(Left(ServerFailure(''))));
     });
 
@@ -302,7 +302,7 @@ void main() {
     test('should return tv series list when call to data source is successful',
         () async {
       // arrange
-      when(mockRemoteDataSource.searchMovies(tQuery))
+      when(mockRemoteDataSource.searchTvSeries(tQuery))
           .thenAnswer((_) async => tTvSeriesModelList);
       // act
       final result = await repository.searchTvSeries(tQuery);

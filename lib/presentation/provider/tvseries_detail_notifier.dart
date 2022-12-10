@@ -65,9 +65,9 @@ class TvSeriesDetailNotifier extends ChangeNotifier {
             _recommendationState = RequestState.Error;
             _message = failure.message;
           },
-          (tvseries) {
+          (tvserie) {
             _recommendationState = RequestState.Loaded;
-            _tvseriesRecommendations = tvseries;
+            _tvseriesRecommendations = tvserie;
           },
         );
         _tvseriesState = RequestState.Loaded;

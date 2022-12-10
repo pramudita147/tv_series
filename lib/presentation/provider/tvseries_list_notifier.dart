@@ -1,16 +1,16 @@
 import 'package:ditonton/domain/entities/tvseries.dart';
-import 'package:ditonton/domain/usecases/get_now_playing_TvSeries.dart';
+import 'package:ditonton/domain/usecases/get_now_playing_tvseries.dart';
 import 'package:ditonton/common/state_enum.dart';
-import 'package:ditonton/domain/usecases/get_popular_TvSeries.dart';
-import 'package:ditonton/domain/usecases/get_top_rated_TvSeries.dart';
+import 'package:ditonton/domain/usecases/get_popular_tvseries.dart';
+import 'package:ditonton/domain/usecases/get_top_rated_tvseries.dart';
 import 'package:flutter/material.dart';
 
 class TvSeriesListNotifier extends ChangeNotifier {
   var _nowPlayingTvSeries = <TvSeries>[];
   List<TvSeries> get nowPlayingTvSeries => _nowPlayingTvSeries;
 
-  RequestState _nowPlayingTvSeriesState = RequestState.Empty;
-  RequestState get nowPlayingTvSeriesState => _nowPlayingTvSeriesState;
+  RequestState _nowPlayingState = RequestState.Empty;
+  RequestState get nowPlayingState => _nowPlayingState;
 
   var _popularTvSeries = <TvSeries>[];
   List<TvSeries> get popularTvSeries => _popularTvSeries;
@@ -38,18 +38,18 @@ class TvSeriesListNotifier extends ChangeNotifier {
   final GetTopRatedTvSeries getTopRatedTvSeries;
 
   Future<void> fetchNowPlayingTvSeries() async {
-    _nowPlayingTvSeriesState = RequestState.Loading;
+    _nowPlayingState = RequestState.Loading;
     notifyListeners();
 
     final result = await getNowPlayingTvSeries.execute();
     result.fold(
       (failure) {
-        _nowPlayingTvSeriesState = RequestState.Error;
+        _nowPlayingState = RequestState.Error;
         _message = failure.message;
         notifyListeners();
       },
       (tvseriesData) {
-        _nowPlayingTvSeriesState = RequestState.Loaded;
+        _nowPlayingState = RequestState.Loaded;
         _nowPlayingTvSeries = tvseriesData;
         notifyListeners();
       },
