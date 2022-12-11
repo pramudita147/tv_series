@@ -4,4 +4,7 @@ Build Status Badge Menggunakan Codemagic
 
 
 Build status Menggunakan Codemagic
-![Screenshot (155)](https://i.postimg.cc/yx0nzSkT/Finish-Build-Codemagic.png)
+![Screenshot (1)](https://i.postimg.cc/yx0nzSkT/Finish-Build-Codemagic.png)
+
+Analytics
+![Screenshot (1)](https://i.postimg.cc/k5pB71Sn/Anlytics.png)
