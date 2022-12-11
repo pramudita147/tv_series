@@ -57,10 +57,8 @@ class _WatchlistMoviesPageState extends State<WatchlistMoviesPage>
               );
             } else if (state is MoviesWatchlistError) {
               return Center(child: Text(state.message));
-            } else if (state is MoviesWatchlistEmpty) {
-              return Center(child: Text("Watchlist Movies Empty"));
             } else {
-              return Container();
+              return Center(child: Text("Watchlist Movies Empty"));
             }
           },
         ),

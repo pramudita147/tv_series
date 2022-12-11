@@ -1,9 +1,8 @@
-import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/common/utils.dart';
-import 'package:ditonton/presentation/provider/watchlist_tvseries_notifier.dart';
+import 'package:ditonton/presentation/bloc/tvseries_watchlist_bloc.dart';
 import 'package:ditonton/presentation/widgets/tvseries_card_list.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WatchlistTvSeriesPage extends StatefulWidget {
   static const ROUTE_NAME = '/watchlist-tv';
@@ -17,9 +16,8 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
   @override
   void initState() {
     super.initState();
-    Future.microtask(() =>
-        Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-            .fetchWatchlistTvSeries());
+    Future.microtask(
+        () => context.read<TvWatchlistBloc>().add(FetchWatchlistTv()));
   }
 
   @override
@@ -29,8 +27,7 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
   }
 
   void didPopNext() {
-    Provider.of<WatchlistTvSeriesNotifier>(context, listen: false)
-        .fetchWatchlistTvSeries();
+    context.read<TvWatchlistBloc>().add(FetchWatchlistTv());
   }
 
   @override
@@ -41,25 +38,29 @@ class _WatchlistTvSeriesPageState extends State<WatchlistTvSeriesPage>
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Consumer<WatchlistTvSeriesNotifier>(
-          builder: (context, data, child) {
-            if (data.watchlistState == RequestState.Loading) {
-              return Center(
+        child: BlocBuilder<TvWatchlistBloc, TvWatchlistState>(
+          builder: (context, state) {
+            if (state is TvWatchlistLoading) {
+              return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (data.watchlistState == RequestState.Loaded) {
+            } else if (state is TvWatchlistLoaded) {
+              final result = state.watchlist;
               return ListView.builder(
+                padding: const EdgeInsets.all(8),
+                shrinkWrap: true,
                 itemBuilder: (context, index) {
-                  final tvseries = data.watchlistTvSeries[index];
+                  final tvseries = result[index];
                   return TvSeriesCard(tvseries);
                 },
-                itemCount: data.watchlistTvSeries.length,
+                itemCount: result.length,
               );
+            } else if (state is TvWatchlistError) {
+              return Center(child: Text(state.message));
+            } else if (state is TvWatchlistEmpty) {
+              return Center(child: Text("Watchlist Tv Series Empty"));
             } else {
-              return Center(
-                key: Key('error_message'),
-                child: Text(data.message),
-              );
+              return Container();
             }
           },
         ),
