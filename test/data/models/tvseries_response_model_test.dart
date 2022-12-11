@@ -50,7 +50,7 @@ void main() {
             "overview": "Overview",
             "popularity": 1.0,
             "poster_path": "/path.jpg",
-            "name": "Name",
+            "name": "name",
             "vote_average": 1.0,
             "vote_count": 1
           }

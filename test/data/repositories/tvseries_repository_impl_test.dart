@@ -210,7 +210,7 @@ void main() {
     );
 
     test(
-        'should return Tv Series data when the call to remote data source is successful',
+        'should return Tv data when the call to remote data source is successful',
         () async {
       // arrange
       when(mockRemoteDataSource.getTvSeriesDetail(tId))
@@ -219,7 +219,7 @@ void main() {
       final result = await repository.getTvSeriesDetail(tId);
       // assert
       verify(mockRemoteDataSource.getTvSeriesDetail(tId));
-      expect(result, equals(Right(tTvSeriesResponse)));
+      expect(result, equals(Right(testTvSeriesDetail)));
     });
 
     test(

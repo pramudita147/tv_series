@@ -72,7 +72,7 @@ void main() {
         .thenAnswer((_) async => Right(tTvSeriesList));
   }
 
-  group('Get Tv Series Detail', () {
+  group('Get tvseries Detail', () {
     test('should get data from the usecase', () async {
       // arrange
       _arrangeUsecase();
@@ -93,7 +93,7 @@ void main() {
       expect(listenerCallCount, 1);
     });
 
-    test('should change TvSeries when data is gotten successfully', () async {
+    test('should change tvseries when data is gotten successfully', () async {
       // arrange
       _arrangeUsecase();
       // act
@@ -105,15 +105,15 @@ void main() {
     });
 
     test(
-        'should change recommendation TvSeries when data is gotten successfully',
+        'should change recommendation tvseries  when data is gotten successfully',
         () async {
       // arrange
       _arrangeUsecase();
       // act
       await provider.fetchTvSeriesDetail(tId);
       // assert
-      expect(provider.recommendationState, RequestState.Loaded);
-      expect(provider.tvseriesRecommendations, tTvSeries);
+      expect(provider.tvseriesState, RequestState.Loaded);
+      expect(provider.tvseriesRecommendations, tTvSeriesList);
     });
   });
 
@@ -125,7 +125,7 @@ void main() {
       await provider.fetchTvSeriesDetail(tId);
       // assert
       verify(mockGetTvSeriesRecommendations.execute(tId));
-      expect(provider.tvseriesRecommendations, tTvSeries);
+      expect(provider.tvseriesRecommendations, tTvSeriesList);
     });
 
     test('should update recommendation state when data is gotten successfully',
@@ -136,7 +136,7 @@ void main() {
       await provider.fetchTvSeriesDetail(tId);
       // assert
       expect(provider.recommendationState, RequestState.Loaded);
-      expect(provider.tvseriesRecommendations, tTvSeries);
+      expect(provider.tvseriesRecommendations, tTvSeriesList);
     });
 
     test('should update error message when request in successful', () async {
