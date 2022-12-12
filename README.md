@@ -8,3 +8,6 @@ Build status Menggunakan Codemagic
 
 Analytics
 ![Screenshot (1)](https://i.postimg.cc/k5pB71Sn/Anlytics.png)
+
+Hasil Crashlytics
+![Screenshot (1)](https://i.postimg.cc/tTvsJ700/hasil-crashlytics.png)
