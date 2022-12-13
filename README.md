@@ -10,4 +10,4 @@ Analytics
 ![Screenshot (1)](https://i.postimg.cc/k5pB71Sn/Anlytics.png)
 
 Hasil Crashlytics
-![Screenshot (1)](https://i.postimg.cc/HW8fFNfh/crashlytics-fix.png)
+![Screenshot (1)](https://i.postimg.cc/N02XB2Z6/crashlytics-final.png)
